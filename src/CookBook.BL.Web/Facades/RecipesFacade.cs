@@ -1,7 +1,9 @@
 ﻿using CookBook.ApiClients;
+using CookBook.DAL.Web.Repositories;
 using CookBook.Models;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace CookBook.BL.Web.Facades
@@ -9,31 +11,42 @@ namespace CookBook.BL.Web.Facades
     public class RecipesFacade : FacadeBase
     {
         private readonly IRecipeClient recipeClient;
+        private readonly RecipeRepository recipeRepository;
 
-        public RecipesFacade(IRecipeClient recipeClient)
+        public RecipesFacade(
+            IRecipeClient recipeClient,
+            RecipeRepository recipeRepository)
         {
             this.recipeClient = recipeClient;
+            this.recipeRepository = recipeRepository;
         }
 
         public async Task<ICollection<RecipeListModel>> GetRecipesAsync()
         {
             return await recipeClient.RecipeGetAsync(apiVersion, culture);
         }
-        public async Task<RecipeDetailModel> GetRecipesAsync(Guid id)
+
+        public async Task<RecipeDetailModel> GetRecipeAsync(Guid id)
         {
             return await recipeClient.RecipeGetAsync(id, apiVersion, culture);
         }
 
-        public async Task<Guid> SaveAsync(RecipeDetailModel data)
+        public async Task SaveAsync(RecipeDetailModel data)
         {
-            if (data.Id == Guid.Empty)
+            try
             {
-                return await recipeClient.RecipePostAsync(apiVersion, culture, data);
+                if (data.Id == Guid.Empty)
+                {
+                    await recipeClient.RecipePostAsync(apiVersion, culture, data);
+                }
+                else
+                {
+                    await recipeClient.RecipePutAsync(apiVersion, culture, data);
+                }
             }
-            else
+            catch (HttpRequestException exception) when (exception.Message.Contains("Failed to fetch"))
             {
-                var recipePutAsync = await recipeClient.RecipePutAsync(apiVersion, culture, data);
-                return recipePutAsync ?? Guid.Empty;
+                await recipeRepository.InsertAsync(data);
             }
         }
 

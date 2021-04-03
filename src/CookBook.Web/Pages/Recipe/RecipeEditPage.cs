@@ -63,7 +63,7 @@ namespace CookBook.Web.Pages
             }
             else
             {
-                Data = await RecipeFacade.GetRecipesAsync(Id);
+                Data = await RecipeFacade.GetRecipeAsync(Id);
             }
 
             Ingredients = await IngredientFacade.GetIngredientsAsync();

@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace CookBook.DAL.Web.Repositories
 {
-    public interface IWebRepository<TEntity>
-        where TEntity : IId
+    public interface IWebRepository<T>
+        where T : IId
     {
-        Task<IList<TEntity>> GetAllAsync();
-        Task<TEntity> GetByIdAsync(Guid id);
-        Task InsertAsync(TEntity entity);
+        string TableName { get; }
+        Task<IList<T>> GetAllAsync();
+        Task<T> GetByIdAsync(Guid id);
+        Task InsertAsync(T entity);
         Task RemoveAsync(Guid id);
     }
 }

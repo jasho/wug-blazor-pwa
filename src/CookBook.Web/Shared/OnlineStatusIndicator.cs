@@ -6,6 +6,9 @@ namespace CookBook.Web.Shared
 {
     public partial class OnlineStatusIndicator
     {
+        private const string InitializeInvokeName = "OnlineStatus.Initialize";
+        private const string DisposeInvokeName = "OnlineStatus.Dispose";
+
         [Inject]
         private IJSRuntime jsRuntime { get; set; }
 
@@ -39,12 +42,12 @@ namespace CookBook.Web.Shared
         {
             await base.OnInitializedAsync();
 
-            await jsRuntime.InvokeVoidAsync("OnlineStatus.Initialize", DotNetObjectReference.Create(this));
+            await jsRuntime.InvokeVoidAsync(InitializeInvokeName, DotNetObjectReference.Create(this));
         }
 
         public async ValueTask DisposeAsync()
         {
-            await jsRuntime.InvokeVoidAsync("OnlineStatus.Dispose");
+            await jsRuntime.InvokeVoidAsync(DisposeInvokeName);
         }
 
         public static bool IsOnlineStatic { get; set; }

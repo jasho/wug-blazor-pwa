@@ -1,20 +1,23 @@
 ﻿let db;
 
 window.LocalDb = {
-    Initialize: function (interop) {
+    Initialize: function () {
         db = new Dexie('cookbook_database');
         db.version(1).stores({
-            recipes: 'id, name, description'
+            recipes: ''
         });
     },
-    Insert: function (entity) {
-        db.table("recipes").put(entity);
-    },
-    Remove: async function (id) {
-        await db.table("recipes").bulkDelete([id]);
+    GetAll: async function (tableName) {
+        return await db.table(tableName).toArray();
     },
     GetById: async function (id) {
-        let recipe = await db.table("recipes").get(id);
+        let recipe = await db.table(tableName).get(id);
         return recipe;
+    },
+    Insert: function (tableName, entity) {
+        db.table(tableName).put(entity);
+    },
+    Remove: async function (id) {
+        await db.table(tableName).bulkDelete([id]);
     }
 };
