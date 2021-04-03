@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using CookBook.Models;
+using CookBook.Common.Enums;
 using System;
 using System.Collections.Generic;
 
-namespace CookBook.DAL.Entities
+namespace CookBook.DAL.Api.Entities
 {
     public class RecipeEntity : EntityBase
     {

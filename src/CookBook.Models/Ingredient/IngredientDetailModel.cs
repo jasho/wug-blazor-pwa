@@ -1,9 +1,10 @@
-﻿using System;
+﻿using CookBook.Common;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace CookBook.Models
 {
-    public class IngredientDetailModel
+    public class IngredientDetailModel : IId
     {
         public Guid Id { get; set; }
         [Required]

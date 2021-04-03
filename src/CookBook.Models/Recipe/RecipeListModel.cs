@@ -1,10 +1,11 @@
-﻿using CookBook.Models;
+﻿using CookBook.Common;
+using CookBook.Common.Enums;
 using EnumsNET;
 using System;
 
 namespace CookBook.Models
 {
-    public class RecipeListModel
+    public class RecipeListModel : IId
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

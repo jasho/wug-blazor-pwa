@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using CookBook.DAL.Entities;
+using CookBook.DAL.Api.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CookBook.DAL.Repositories
+namespace CookBook.DAL.Api.Repositories
 {
-    public class IngredientAmountRepository : IAppRepository<IngredientAmountEntity>
+    public class IngredientAmountRepository : IApiRepository<IngredientAmountEntity>
     {
         private readonly IList<IngredientAmountEntity> ingredientAmounts;
         private readonly IMapper mapper;

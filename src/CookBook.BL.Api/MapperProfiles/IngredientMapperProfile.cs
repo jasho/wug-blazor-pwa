@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CookBook.DAL.Entities;
+using CookBook.DAL.Api.Entities;
 using CookBook.Models;
 
 namespace CookBook.BL.Api.MapperProfiles

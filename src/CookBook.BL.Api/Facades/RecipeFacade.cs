@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CookBook.BL.Common.Facades;
-using CookBook.DAL.Entities;
-using CookBook.DAL.Repositories;
+using CookBook.DAL.Api.Entities;
+using CookBook.DAL.Api.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

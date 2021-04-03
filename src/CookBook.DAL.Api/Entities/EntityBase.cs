@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CookBook.DAL.Entities
+namespace CookBook.DAL.Api.Entities
 {
     public abstract class EntityBase : IEntity
     {

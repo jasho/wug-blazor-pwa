@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace CookBook.Models
+namespace CookBook.Common.Enums
 {
     public enum Unit
     {

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace CookBook.DAL.Entities
+namespace CookBook.DAL.Api.Entities
 {
     public class IngredientEntity : EntityBase
     {

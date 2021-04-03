@@ -1,10 +1,10 @@
-﻿using CookBook.DAL.Entities;
+﻿using CookBook.DAL.Api.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace CookBook.DAL.Repositories
+namespace CookBook.DAL.Api.Repositories
 {
-    public interface IAppRepository<TEntity>
+    public interface IApiRepository<TEntity>
         where TEntity : IEntity
     {
         IList<TEntity> GetAll();

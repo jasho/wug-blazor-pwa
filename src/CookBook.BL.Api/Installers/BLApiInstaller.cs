@@ -9,7 +9,7 @@ namespace CookBook.BL.Api.Installers
         public void Install(IServiceCollection serviceCollection)
         {
             serviceCollection.Scan(selector =>
-                selector.FromCallingAssembly()
+                selector.FromAssemblyOf<BLApiInstaller>()
                         .AddClasses(classes => classes.AssignableTo<IAppFacade>())
                         .AsSelfWithInterfaces()
                         .WithTransientLifetime());

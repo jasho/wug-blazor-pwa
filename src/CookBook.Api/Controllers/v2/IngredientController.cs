@@ -1,5 +1,5 @@
-﻿using CookBook.DAL.Entities;
-using CookBook.DAL.Repositories;
+﻿using CookBook.DAL.Api.Entities;
+using CookBook.DAL.Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using System;

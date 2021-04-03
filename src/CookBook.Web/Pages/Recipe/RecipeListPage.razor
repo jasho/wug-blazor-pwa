@@ -24,5 +24,12 @@
 </table>
 
 <div class="text-center">
-    <NavLink href="@("/recipe/create")" class="btn btn-primary">Create new recipe</NavLink>
+    <OnlineStatusIndicator>
+        <OnlineFragment>
+            <NavLink href="@("/recipe/create")" class="btn btn-primary">Create new recipe</NavLink>
+        </OnlineFragment>
+        <OfflineFragment>
+            <h1>You are offline. Cannot create new recipe when offline!</h1>
+        </OfflineFragment>
+    </OnlineStatusIndicator>
 </div>

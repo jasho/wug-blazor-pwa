@@ -1,15 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Enums.NET" Version="4.0.0" />
+    <PackageReference Include="Microsoft.JSInterop" Version="5.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CookBook.Common\CookBook.Common.csproj" />
+    <ProjectReference Include="..\CookBook.Models\CookBook.Models.csproj" />
   </ItemGroup>
 
 </Project>

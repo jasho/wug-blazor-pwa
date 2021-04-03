@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using CookBook.Models;
+using CookBook.Common.Enums;
 using System;
 
-namespace CookBook.DAL.Entities
+namespace CookBook.DAL.Api.Entities
 {
     public class IngredientAmountEntity : EntityBase
     {
