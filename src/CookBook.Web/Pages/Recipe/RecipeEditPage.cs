@@ -1,13 +1,10 @@
-﻿using CookBook.Models;
+﻿using CookBook.BL.Web.Facades;
+using CookBook.Models;
 using Microsoft.AspNetCore.Components;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
-using CookBook.WEB.BL.Facades;
 
 namespace CookBook.Web.Pages
 {
@@ -18,9 +15,9 @@ namespace CookBook.Web.Pages
         private NavigationManager navigationManager { get; set; }
 
         [Inject]
-        private RecipesFacade RecipeFacade { get; set; } 
+        private RecipesFacade RecipeFacade { get; set; }
         [Inject]
-        private IngredientsFacade IngredientFacade { get; set; } 
+        private IngredientsFacade IngredientFacade { get; set; }
 
         private RecipeDetailModel Data { get; set; }
 

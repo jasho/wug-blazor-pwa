@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Components;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using CookBook.BL.Web.Facades;
 using CookBook.Models;
-using CookBook.WEB.BL.Facades;
+using Microsoft.AspNetCore.Components;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CookBook.Web.Pages
 {
@@ -16,7 +14,7 @@ namespace CookBook.Web.Pages
         private ICollection<RecipeListModel> Recipes { get; set; } = new List<RecipeListModel>();
 
         protected override async Task OnInitializedAsync()
-        {   
+        {
             Recipes = await RecipeFacade.GetRecipesAsync();
 
             await base.OnInitializedAsync();

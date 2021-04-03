@@ -1,12 +1,8 @@
-﻿using CookBook.Models;
+﻿using CookBook.BL.Web.Facades;
+using CookBook.Models;
 using Microsoft.AspNetCore.Components;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
-using CookBook.WEB.BL.Facades;
 
 namespace CookBook.Web.Components
 {
@@ -31,7 +27,7 @@ namespace CookBook.Web.Components
             }
             else
             {
-                Data =await IngredientFacade.GetIngredientAsync(Id);
+                Data = await IngredientFacade.GetIngredientAsync(Id);
             }
 
             await base.OnInitializedAsync();

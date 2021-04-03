@@ -1,6 +1,6 @@
 ﻿using CookBook.BL.Common.Facades;
 
-namespace CookBook.WEB.BL.Facades
+namespace CookBook.BL.Web.Facades
 {
     public class FacadeBase : IAppFacade
     {

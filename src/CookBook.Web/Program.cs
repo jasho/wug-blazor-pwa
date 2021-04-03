@@ -1,10 +1,9 @@
+using CookBook.BL.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using CookBook.Common.Extensions;
-using CookBook.WEB.BL;
 
 namespace CookBook.Web
 {
@@ -21,7 +20,7 @@ namespace CookBook.Web
         private static void Install(WebAssemblyHostBuilder builder)
         {
             new BLWebInstaller().Install(builder.Services);
-            builder.Services.AddScoped(sp => new HttpClient {BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)});
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
         }
     }
 }

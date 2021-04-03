@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using CookBook.ApiClients;
+﻿using CookBook.ApiClients;
 using CookBook.Models;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace CookBook.WEB.BL.Facades
+namespace CookBook.BL.Web.Facades
 {
     public class IngredientsFacade : FacadeBase
     {

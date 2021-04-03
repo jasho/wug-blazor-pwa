@@ -3,7 +3,7 @@ using CookBook.BL.Common.Facades;
 using CookBook.Common.Installers;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CookBook.WEB.BL
+namespace CookBook.BL.Web
 {
     public class BLWebInstaller : IInstaller
     {
@@ -11,7 +11,7 @@ namespace CookBook.WEB.BL
         {
             serviceCollection.AddTransient<IIngredientClient, IngredientClient>();
             serviceCollection.AddTransient<IRecipeClient, RecipeClient>();
-            
+
             serviceCollection.Scan(selector =>
                 selector.FromCallingAssembly()
                     .AddClasses(classes => classes.AssignableTo<IAppFacade>())
