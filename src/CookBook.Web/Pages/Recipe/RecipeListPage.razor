@@ -3,6 +3,8 @@
 @layout ListLayout
 @inherits PageBase
 
+@using System
+
 <h1>Recipes</h1>
 
 <table class="table border table-striped">
@@ -10,14 +12,34 @@
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Food type</th>
+            <th scope="col">Note</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var recipe in Recipes)
         {
             <tr>
-                <td><NavLink href="@($"/recipe/{recipe.Id}")">@recipe.Name</NavLink></td>
+                <td>
+                    @{
+                        if (recipe.Id == Guid.Empty)
+                        {
+                            <span>@recipe.Name</span>
+                        }
+                        else
+                        {
+                            <NavLink href="@($"/recipe/{recipe.Id}")">@recipe.Name</NavLink>
+                        }
+                    }
+                </td>
                 <td>@recipe.FoodTypeText</td>
+                <td>
+                    @{
+                        if (recipe.Id == Guid.Empty)
+                        {
+                            <span>Not Synced</span>
+                        }
+                    }
+                </td>
             </tr>
         }
     </tbody>

@@ -19,7 +19,7 @@ namespace CookBook.Web.Pages
         [Inject]
         private IngredientsFacade IngredientFacade { get; set; }
 
-        private RecipeDetailModel Data { get; set; }
+        private RecipeDetailModel Data { get; set; } = new RecipeDetailModel();
 
         [Parameter]
         public Guid Id { get; set; }
