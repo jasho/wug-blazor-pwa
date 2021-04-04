@@ -9,7 +9,7 @@ namespace CookBook.Web.Pages
     public partial class IngredientListPage
     {
         [Inject]
-        private IngredientsFacade IngredientFacade { get; set; }
+        private IngredientFacade IngredientFacade { get; set; }
 
         private ICollection<IngredientListModel> Ingredients { get; set; } = new List<IngredientListModel>();
 
@@ -22,7 +22,7 @@ namespace CookBook.Web.Pages
 
         private async Task LoadData()
         {
-            Ingredients = await IngredientFacade.GetIngredientsAsync();
+            Ingredients = await IngredientFacade.GetAllAsync();
         }
     }
 }

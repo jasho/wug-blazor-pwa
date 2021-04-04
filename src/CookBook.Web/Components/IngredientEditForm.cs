@@ -9,7 +9,7 @@ namespace CookBook.Web.Components
     public partial class IngredientEditForm
     {
         [Inject]
-        public IngredientsFacade IngredientFacade { get; set; }
+        public IngredientFacade IngredientFacade { get; set; }
 
         [Parameter]
         public Guid Id { get; set; }
@@ -17,7 +17,7 @@ namespace CookBook.Web.Components
         [Parameter]
         public EventCallback OnModification { get; set; }
 
-        public IngredientDetailModel Data { get; set; }
+        public IngredientDetailModel Data { get; set; } = new IngredientDetailModel();
 
         protected override async Task OnInitializedAsync()
         {
@@ -27,7 +27,7 @@ namespace CookBook.Web.Components
             }
             else
             {
-                Data = await IngredientFacade.GetIngredientAsync(Id);
+                Data = await IngredientFacade.GetByIdAsync(Id);
             }
 
             await base.OnInitializedAsync();
@@ -35,12 +35,13 @@ namespace CookBook.Web.Components
 
         public async Task Save()
         {
-            var resultId = await IngredientFacade.SaveAsync(Data);
+            await IngredientFacade.SaveAsync(Data);
+            Data = new IngredientDetailModel();
+
             if (OnModification.HasDelegate)
             {
-                await OnModification.InvokeAsync(resultId);
+                await OnModification.InvokeAsync(null);
             }
-            Data = new IngredientDetailModel();
         }
 
         public async Task Delete()

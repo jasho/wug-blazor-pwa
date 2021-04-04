@@ -7,13 +7,23 @@ namespace CookBook.Web.Shared
     public partial class MainLayout
     {
         [Inject]
-        public RecipesFacade RecipesFacade { get; set; }
+        public RecipeFacade RecipeFacade { get; set; }
+
+        [Inject]
+        public IngredientFacade IngredientFacade { get; set; }
 
         public async Task OnlineStatusChangedAsync(bool isOnline)
         {
             if (isOnline)
             {
-                await RecipesFacade.SynchronizeLocalDataAsync();
+                var dataChanged = false;
+                dataChanged = dataChanged || await IngredientFacade.SynchronizeLocalDataAsync();
+                dataChanged = dataChanged || await RecipeFacade.SynchronizeLocalDataAsync();
+
+                if (dataChanged)
+                {
+                    StateHasChanged();
+                }
             }
         }
     }

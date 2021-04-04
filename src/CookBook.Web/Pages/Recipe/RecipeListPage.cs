@@ -13,13 +13,13 @@ namespace CookBook.Web.Pages
         private IJSRuntime jsRuntime { get; set; }
 
         [Inject]
-        private RecipesFacade RecipeFacade { get; set; }
+        private RecipeFacade RecipeFacade { get; set; }
 
         private ICollection<RecipeListModel> Recipes { get; set; } = new List<RecipeListModel>();
 
         protected override async Task OnInitializedAsync()
         {
-            Recipes = await RecipeFacade.GetRecipesAsync();
+            Recipes = await RecipeFacade.GetAllAsync();
 
             await base.OnInitializedAsync();
         }

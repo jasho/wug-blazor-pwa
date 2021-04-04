@@ -4,7 +4,8 @@ window.LocalDb = {
     Initialize: function () {
         db = new Dexie('cookbook_database');
         db.version(1).stores({
-            recipes: ''
+            recipes: 'id',
+            ingredients: 'id',
         });
     },
     GetAll: async function (tableName) {

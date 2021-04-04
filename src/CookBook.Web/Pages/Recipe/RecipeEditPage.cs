@@ -15,9 +15,9 @@ namespace CookBook.Web.Pages
         private NavigationManager navigationManager { get; set; }
 
         [Inject]
-        private RecipesFacade RecipeFacade { get; set; }
+        private RecipeFacade RecipeFacade { get; set; }
         [Inject]
-        private IngredientsFacade IngredientFacade { get; set; }
+        private IngredientFacade IngredientFacade { get; set; }
 
         private RecipeDetailModel Data { get; set; } = new RecipeDetailModel();
 
@@ -63,10 +63,10 @@ namespace CookBook.Web.Pages
             }
             else
             {
-                Data = await RecipeFacade.GetRecipeAsync(Id);
+                Data = await RecipeFacade.GetByIdAsync(Id);
             }
 
-            Ingredients = await IngredientFacade.GetIngredientsAsync();
+            Ingredients = await IngredientFacade.GetAllAsync();
 
             await base.OnInitializedAsync();
         }

@@ -1,4 +1,6 @@
-﻿using CookBook.ApiClients;
+﻿using AutoMapper;
+using CookBook.ApiClients;
+using CookBook.DAL.Web.Repositories;
 using CookBook.Models;
 using System;
 using System.Collections.Generic;
@@ -6,11 +8,15 @@ using System.Threading.Tasks;
 
 namespace CookBook.BL.Web.Facades
 {
-    public class IngredientsFacade : FacadeBase
+    public class IngredientFacade : FacadeBase<IngredientDetailModel, IngredientListModel>
     {
         private readonly IIngredientClient ingredientClient;
 
-        public IngredientsFacade(IIngredientClient ingredientClient)
+        public IngredientFacade(
+            IIngredientClient ingredientClient,
+            IngredientRepository ingredientRepository,
+            IMapper mapper)
+            : base(ingredientRepository, mapper)
         {
             this.ingredientClient = ingredientClient;
         }
@@ -20,12 +26,22 @@ namespace CookBook.BL.Web.Facades
             return await ingredientClient.IngredientGetAsync(apiVersion, culture);
         }
 
-        public async Task<IngredientDetailModel> GetIngredientAsync(Guid id)
+        public override async Task<List<IngredientListModel>> GetAllAsync()
+        {
+            var ingredientsAll = await base.GetAllAsync();
+
+            var ingredientsFromApi = await ingredientClient.IngredientGetAsync(apiVersion, culture);
+            ingredientsAll.AddRange(ingredientsFromApi);
+
+            return ingredientsAll;
+        }
+
+        public override async Task<IngredientDetailModel> GetByIdAsync(Guid id)
         {
             return await ingredientClient.IngredientGetAsync(id, apiVersion, culture);
         }
 
-        public async Task<Guid> SaveAsync(IngredientDetailModel data)
+        public override async Task<Guid> SaveToApiAsync(IngredientDetailModel data)
         {
             if (data.Id == Guid.Empty)
             {
@@ -37,7 +53,7 @@ namespace CookBook.BL.Web.Facades
             }
         }
 
-        public async Task DeleteAsync(Guid id)
+        public override async Task DeleteAsync(Guid id)
         {
             await ingredientClient.IngredientDeleteAsync(id, apiVersion, culture);
         }
