@@ -17,7 +17,7 @@ window.LocalDb = {
     Insert: function (tableName, entity) {
         db.table(tableName).put(entity);
     },
-    Remove: async function (id) {
+    Remove: async function (tableName, id) {
         await db.table(tableName).bulkDelete([id]);
     }
 };

@@ -54,5 +54,15 @@ namespace CookBook.BL.Web.Facades
         {
             await recipeClient.RecipeDeleteAsync(id, apiVersion, culture);
         }
+
+        public async Task SynchronizeLocalDataAsync()
+        {
+            var localItems = await recipeRepository.GetAllAsync();
+            foreach (var localItem in localItems)
+            {
+                await SaveAsync(localItem);
+                await recipeRepository.RemoveAsync(localItem.Id);
+            }
+        }
     }
 }
