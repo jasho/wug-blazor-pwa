@@ -25,6 +25,7 @@ const fromNetwork = (request, timeout) =>
             clearTimeout(timeoutId);
             fulfill(response);
             if (request.method === 'GET'
+                && !request.url.startsWith('chrome-extension://')
                 && response.type !== 'opaque') {
                 updateCache(request, response.clone());
             }

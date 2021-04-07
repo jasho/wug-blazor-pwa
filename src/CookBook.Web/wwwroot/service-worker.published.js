@@ -8,9 +8,10 @@ const offlineAssetsExclude = [/^service-worker\.js$/];
 
 function install() {
     caches.open(cacheName).then(cache => {
-        let precacheAssets = self.assetsManifest.assets
+        const precacheAssets = self.assetsManifest.assets
             .filter(asset => offlineAssetsInclude.some(pattern => pattern.test(asset.url)))
-            .filter(asset => !offlineAssetsExclude.some(pattern => pattern.test(asset.url)));
+            .filter(asset => !offlineAssetsExclude.some(pattern => pattern.test(asset.url)))
+            .map(asset => new Request(asset.url, { integrity: asset.hash }));
         cache.addAll(precacheAssets);
     });
 }
@@ -26,6 +27,7 @@ const fromNetwork = (request, timeout) =>
             clearTimeout(timeoutId);
             fulfill(response);
             if (request.method === 'GET'
+                && !request.url.startsWith('chrome-extension://')
                 && response.type !== 'opaque') {
                 updateCache(request, response.clone());
             }

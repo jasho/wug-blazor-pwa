@@ -12,6 +12,10 @@ namespace CookBook.Web.Shared
         [Inject]
         public IngredientFacade IngredientFacade { get; set; }
 
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
+
+
         public async Task OnlineStatusChangedAsync(bool isOnline)
         {
             if (isOnline)
@@ -22,7 +26,7 @@ namespace CookBook.Web.Shared
 
                 if (dataChanged)
                 {
-                    StateHasChanged();
+                    NavigationManager.NavigateTo(NavigationManager.Uri, true);
                 }
             }
         }
