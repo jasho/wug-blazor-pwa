@@ -348,3 +348,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/src/CookBook.Web/Properties/ServiceDependencies/app-wug-blazor-pwa - Web Deploy/profile.arm.json
+/src/CookBook.Api/Properties/ServiceDependencies/app-wug-blazor-pwa-api - Web Deploy/profile.arm.json
