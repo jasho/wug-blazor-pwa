@@ -59,7 +59,7 @@ namespace CookBook.ApiClients
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.8.2.0 (NJsonSchema v10.2.1.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class IngredientClient : IIngredientClient
     {
-        private string _baseUrl = "https://app-wug-blazor-pwa-api.azurewebsites.net/";
+        private string _baseUrl = "https://localhost:44378/";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
@@ -619,7 +619,7 @@ namespace CookBook.ApiClients
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.8.2.0 (NJsonSchema v10.2.1.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class LoggingClient : ILoggingClient
     {
-        private string _baseUrl = "https://app-wug-blazor-pwa-api.azurewebsites.net/";
+        private string _baseUrl = "https://localhost:44378/";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
@@ -867,7 +867,7 @@ namespace CookBook.ApiClients
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.8.2.0 (NJsonSchema v10.2.1.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class RecipeClient : IRecipeClient
     {
-        private string _baseUrl = "https://app-wug-blazor-pwa-api.azurewebsites.net/";
+        private string _baseUrl = "https://localhost:44378/";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
